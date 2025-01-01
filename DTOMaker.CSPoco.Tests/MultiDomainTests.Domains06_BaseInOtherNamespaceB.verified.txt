@@ -11,7 +11,7 @@ using System;
 
 namespace MyOrg.DomainB.CSPoco
 {
-    public partial class MyDTO : DTOMaker.Runtime.CSPoco.EntityBase, IMyDTO, IEquatable<MyDTO>
+    public partial class MyDTO : MyOrg.DomainA.CSPoco.MyBase, IMyDTO, IEquatable<MyDTO>
     {
         // Derived entities: 0
 

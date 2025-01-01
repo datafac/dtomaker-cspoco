@@ -11,7 +11,7 @@ using System;
 
 namespace MyOrg.Models.CSPoco
 {
-    public partial class MyBase : EntityBase, IMyBase, IEquatable<MyBase>
+    public partial class MyBase : DTOMaker.Runtime.CSPoco.EntityBase, IMyBase, IEquatable<MyBase>
     {
         // Derived entities: 1
         // - MyDTO

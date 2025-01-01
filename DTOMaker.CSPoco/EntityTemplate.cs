@@ -12,20 +12,10 @@ using DTOMaker.Runtime;
 using DTOMaker.Runtime.CSPoco;
 using System;
 
-namespace T_NameSpace_.CSPoco
+//##if false
+namespace T_BaseNameSpace_.CSPoco
 {
-    //##if false
-    using T_MemberType_ = System.Int32;
     public interface IT_BaseName_ { }
-    public interface IT_EntityName_ : IT_BaseName_
-    {
-        //##if MemberIsNullable
-        T_MemberType_? T_ScalarNullableMemberName_ { get; set; }
-        //##else
-        T_MemberType_ T_ScalarRequiredMemberName_ { get; set; }
-        //##endif
-        ReadOnlyMemory<T_MemberType_> T_VectorMemberName_ { get; set; }
-    }
     public class T_BaseName_ : EntityBase, IT_BaseName_, IEquatable<T_BaseName_>
     {
         public T_BaseName_() { }
@@ -40,8 +30,23 @@ namespace T_NameSpace_.CSPoco
         public override bool Equals(object? obj) => obj is T_BaseName_ other && Equals(other);
         public override int GetHashCode() => base.GetHashCode();
     }
+}
+//##endif
+namespace T_NameSpace_.CSPoco
+{
+    //##if false
+    using T_MemberType_ = System.Int32;
+    public interface IT_EntityName_ : T_BaseNameSpace_.CSPoco.IT_BaseName_
+    {
+        //##if MemberIsNullable
+        T_MemberType_? T_ScalarNullableMemberName_ { get; set; }
+        //##else
+        T_MemberType_ T_ScalarRequiredMemberName_ { get; set; }
+        //##endif
+        ReadOnlyMemory<T_MemberType_> T_VectorMemberName_ { get; set; }
+    }
     //##endif
-    public partial class T_EntityName_ : T_BaseName_, IT_EntityName_, IEquatable<T_EntityName_>
+    public partial class T_EntityName_ : T_BaseNameSpace_.CSPoco.T_BaseName_, IT_EntityName_, IEquatable<T_EntityName_>
     {
         // Derived entities: T_DerivedEntityCount_
         //##foreach DerivedEntities
